@@ -8,8 +8,10 @@ import { useHistory } from 'react-router';
 import { Dispatch } from "redux";
 import { getImages } from '../../Actions/mainActions';
 import { IState } from '../../commanUtils/GenericInterfaces';
+import Loader from '../../Components/Loader/Loader';
 // @ts-ignore
 const Wrapper = styled.div(styles.__masonryWrapper);
+// @ts-ignore
 const ChildWrapper = styled.img(styles.__child);
 
 
@@ -18,10 +20,12 @@ interface IMapDispatchToProps {
 }
 
 interface IMapStateToComponentProps {
-    imageData: []
+    imageData: [],
+    loading: boolean
 }
 const mapStateToProps = (state: IState): IMapStateToComponentProps => ({
-    imageData: _.get(state, "images", [])
+    imageData: _.get(state, "images", []),
+    loading: _.get(state, "loading", false)
 });
 
 function mapDispatchToProps(dispatch: Dispatch<any>): IMapDispatchToProps {
@@ -30,7 +34,7 @@ function mapDispatchToProps(dispatch: Dispatch<any>): IMapDispatchToProps {
     };
 }
 const Layout: React.FC<any> = props => {
-    const { getImages, imageData } = props;
+    const { getImages, imageData, loading } = props;
     const [selectedIndex, setSelectedIndex] = useState(-1)
     const history = useHistory();
     useEffect(() => {
@@ -49,23 +53,27 @@ const Layout: React.FC<any> = props => {
     }
 
     return (
-        <div>
-            <Header />
-            <div className="container">
-                <Wrapper>
-                    {
-                        imageData && imageData.map((item: any, index: number) => {
-                            const imageURL = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`
-                            const isSelected = selectedIndex === index;
-                            return (
-                                <ChildWrapper isSelected={isSelected} src={imageURL} alt={item.title} onClick={() => handleOnClick(index)} />
-                            )
-                        })
-                    }
-                </Wrapper>
-            </div>
+        <>
+            {loading ? <Loader /> :
+                <div>
+                    <Header />
+                    <div className="container">
+                        <Wrapper>
+                            {
+                                imageData && imageData.map((item: any, index: number) => {
+                                    const imageURL = `https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}.jpg`
+                                    const isSelected = selectedIndex === index;
+                                    return (
+                                        <ChildWrapper isSelected={isSelected} src={imageURL} alt={item.title} onClick={() => handleOnClick(index)} />
+                                    )
+                                })
+                            }
+                        </Wrapper>
+                    </div>
 
-        </div>
+                </div>
+            }
+        </>
     )
 
 }

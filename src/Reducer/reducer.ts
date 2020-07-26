@@ -3,7 +3,8 @@ import * as CONST from "../Actions/actionTypes";
 const initialState = {
     user: {},
     isLoggedIn: false,
-    images: []
+    images: [],
+    loading: false
 };
 
 export const mainReducer = (
@@ -11,9 +12,12 @@ export const mainReducer = (
     action: any
 ) => {
     switch (action.type) {
-        // case CONST.SHOW_LOADER: {
-        //     return { ...state, loading: true };
-        // }
+        case CONST.SHOW_LOADER: {
+            return { ...state, loading: true };
+        }
+        case CONST.HIDE_LOADER: {
+            return { ...state, loading: false };
+        }
         case CONST.CLEAR_USER_CREDENTIALS: {
             return { ...state, user: {} };
         }

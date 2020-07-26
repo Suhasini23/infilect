@@ -10,6 +10,8 @@ import { clearAuth } from '../../Actions/authActions';
 const ImageWrapperDiv = styled.div(styles.__imageWrapper);
 // @ts-ignore
 const WrapperDiv = styled.div(styles.__wrapper);
+const ButtonDiv = styled.div(styles.__buttonWrapper);
+
 
 interface IMapStateToComponentProps {
     isLoggedIn?: boolean
@@ -33,7 +35,7 @@ const Header = (props?: IHeader) => {
         <ImageWrapperDiv>
             <img src={mainLogo} alt="logo" />
         </ImageWrapperDiv>
-        <div role="button" onClick={clearData}>{text}</div>
+        <ButtonDiv role="button" onClick={clearData}>{text}</ButtonDiv>
     </WrapperDiv>;
 }
 // @ts-ignore 

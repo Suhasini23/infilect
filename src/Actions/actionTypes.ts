@@ -2,6 +2,10 @@ export const SET_USER_CREDENTIALS = "SET_USER_CREDENTIALS";
 export const CLEAR_USER_CREDENTIALS = "CLEAR_USER_CREDENTIALS";
 export const SET_STATUS = "SET_STATUS";
 export const SET_IMAGES = "SET_IMAGES";
+export const SHOW_LOADER = "SHOW_LOADER";
+export const HIDE_LOADER = "HIDE_LOADER";
+
+
 
 
 

@@ -5,11 +5,12 @@ export const __masonryWrapper = (props: object) => ({
     "@media only screen and (min-width: 1024px)": {
         columnCount: "3",
     },
-    "@media only screen and (max-width: 1023px) and (min-width: 768px)": {
+    "@media only screen and (max-width: 1023px)": {
         columnCount: "3",
     },
-    "@media only screen and (max-width: 767px) and (min-width: 540px)": {
+    "@media only screen and (max-width: 767px)": {
         columnCount: "2",
+        columnGap: "0em",
     }
 
 });
@@ -19,7 +20,11 @@ export const __child = (props: any) => ({
     display: "inline-block",
     margin: "0 0 1em",
     width: "100%",
-    border: props.isSelected ? "4px solid blue" : "unset"
+    border: props.isSelected ? "10px solid blue" : "10px solid white",
+    "@media only screen and (max-width: 767px)": {
+        margin: "unset",
+        border: props.isSelected ? "3px solid blue" : "3px solid white",
 
+    }
 }
 );

@@ -15,22 +15,17 @@ import { setAuth } from '../Actions/authActions';
 
 // @ts-ignore
 const Wrapper = styled.div(styles.__wrapper);
-// const ContainerWrapper = styled.div(style.__container);
+// @ts-ignore
 const DetailsWrapper = styled.div(styles.__detailWrapper);
 // @ts-ignore
 const TitleWrapper = styled.div(styles.__titleWrapper);
 // @ts-ignore
-const FlipWrapper = styled.span(styles.__filpWrapper);
-// @ts-ignore
-const Glitch = styled.p(styles.__glitch);
 const ImgWrapper = styled.p(styles.__imgWrapper);
-// @ts-ignore
-const GlitchFixed = styled.p(styles.__glitchFixed);
-// @ts-ignore
-const GlitchOpacity = styled.p(styles.__glitchOpacity);
 // @ts-ignore
 const Title = styled.p(styles.__title);
 // @ts-ignore
+const FormWrapper = styled.form(styles.formStyle);
+
 
 interface IMapDispatchToProps {
     setAuthData: (name: string, pass: string) => void;
@@ -48,29 +43,6 @@ const LoginPage: React.FC<any> = props => {
     const [password, setPassword] = useState("");
     const history = useHistory();
     const { setAuthData } = props;
-    const renderWord = () => {
-        return (
-            <>
-                <span>E</span>
-                <span>X</span>
-                <span>P</span>
-                <span>L</span>
-                <span>O</span>
-                <span>R</span>
-                <span>E</span>
-            </>
-        )
-    }
-
-    const renderWordflipAnimation = () => {
-        return (
-            <FlipWrapper>
-                <Glitch>{renderWord()}</Glitch>
-                <GlitchFixed>{renderWord()}</GlitchFixed>
-                <GlitchOpacity>{renderWord()}</GlitchOpacity>
-            </FlipWrapper>
-        );
-    };
 
     const notify = () => toast.error("Please fill both the fields", {
         position: "top-center",
@@ -106,8 +78,8 @@ const LoginPage: React.FC<any> = props => {
             <div className="container">
                 <DetailsWrapper>
                     <TitleWrapper>
-                        <Title> {renderWordflipAnimation()}</Title>
-                        <form style={{ paddingTop: "110px" }} onSubmit={handleSubmit}>
+                        <Title> EXPLORE.</Title>
+                        <FormWrapper onSubmit={handleSubmit}>
                             <FormGroup controlId="Username">
                                 <FormControl
                                     autoFocus
@@ -129,7 +101,7 @@ const LoginPage: React.FC<any> = props => {
                                 Login
                             </Button>
 
-                        </form>
+                        </FormWrapper>
                     </TitleWrapper>
                     <ImgWrapper>
                         <img src={background} alt="riimg" />
