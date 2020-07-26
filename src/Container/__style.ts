@@ -41,7 +41,7 @@ export const __title = (props: object) => ({
 export const __titleWrapper = (props: object) => ({
   color: colors.white,
   fontFamily: fonts.mediumFont,
-  padding: "140px",
+  padding: "100px",
   "@media only screen and (max-width: 768px)": {
     padding: "unset"
   }
@@ -60,7 +60,7 @@ export const __subTitleWrapper = (props: object) => ({
 
 export const __imgWrapper = (props: object) => ({
   img: {
-    paddingTop: "63px"
+    paddingTop: "10px"
   },
   "@media only screen and (max-width: 768px)": {
     img: {
