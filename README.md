@@ -1,4 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this in your local--
+1. clone the repo, and run the command yarn in your terminal. 
+2. After all the dependencies are resolved, run yarn start. 
 
 ## Available Scripts
 
